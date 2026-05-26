@@ -1,49 +1,116 @@
 package Controller.Competence;
 
-import jakarta.servlet.ServletConfig;
+import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-/**
- * Servlet implementation class CompetenceServlet
- */
-@WebServlet("/CompetenceServlet")
+import Model.Entites.Competence;
+import Model.InterfaceDB.Database;
+import Model.Service.ServiceImpl.CompetenceService;
+import Model.Utils.ConnexionDB.MySQL;
+
+@WebServlet("/competence")
 public class CompetenceServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CompetenceServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+
+    private CompetenceService competenceService;
+
+    @Override
+    public void init() throws ServletException {
+
+        Database db = new MySQL();
+
+        competenceService =
+                new CompetenceService(db);
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response)
+            throws ServletException, IOException {
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+        String action =
+                request.getParameter("action");
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        if (action == null) {
 
+            response.sendRedirect("erreur.jsp");
+            return;
+        }
+
+        switch (action) {
+
+            case "ajouter":
+                ajouterCompetence(request, response);
+                break;
+
+            case "modifier":
+                modifierCompetence(request, response);
+                break;
+
+            default:
+                response.sendRedirect("erreur.jsp");
+        }
+    }
+
+    private void ajouterCompetence(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException {
+
+        String nom =
+                request.getParameter("nom");
+
+        String description =
+                request.getParameter("description");
+
+        Competence competence =
+                new Competence();
+
+        competence.setNom(nom);
+        competence.setDescription(description);
+
+        competenceService.creerCompetence(
+                competence
+        );
+
+        response.sendRedirect(
+                "succes.jsp"
+        );
+    }
+
+    private void modifierCompetence(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException {
+
+        int id =
+                Integer.parseInt(
+                        request.getParameter("id")
+                );
+
+        String nom =
+                request.getParameter("nom");
+
+        String description =
+                request.getParameter("description");
+
+        Competence competence =
+                new Competence();
+
+        competence.setId(id);
+        competence.setNom(nom);
+        competence.setDescription(description);
+
+        competenceService.modifierCompetence(
+                competence
+        );
+
+        response.sendRedirect(
+                "succes.jsp"
+        );
+    }
 }
