@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Liste des activités</title>
 
-<link rel="stylesheet" href="ListeDesActivites.css">
+<link rel="stylesheet" href="assets/css/ListeDesActivites.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 </head>

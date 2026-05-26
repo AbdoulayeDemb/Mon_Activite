@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/AjouterActivite.css">
+<title>Modification d'une activite </title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/modifier.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 <body>
+
+
 
 <div class="container">
 
@@ -17,13 +19,13 @@
 
     <div class="header">
 
-        <a href="listeActivites" class="back"> <i class="fa-solid fa-arrow-left"></i></a>
+        <a href="listeActivites" class="back"><i class="fa-solid fa-arrow-left"></i></a>
 
-        <h1>Ajouter une activité</h1>
+        <h1>Modifier une activité</h1>
 
     </div>
 
-    <form action="AjouterActivite" method="post">
+    <form action="modifierActivite" method="post">
 
         <input type="hidden" name="id" value="${activite.id}">
 
@@ -152,7 +154,8 @@
         <div class="btn-container">
 
             <button type="submit">
-                Ajouter <i class="fa-solid fa-plus"></i>
+                Modifier 
+              <i class="fa-solid fa-rotate"></i>
             </button>
 
         </div>
