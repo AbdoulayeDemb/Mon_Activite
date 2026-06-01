@@ -17,8 +17,9 @@ public class ClientServiceImpl extends UtilisateurServiceImpl {
 	@Override
 	public void inscription(Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
-		if (utilisateur == null)
+		if (utilisateur == null) {
 			return;
+		}
 
 		if (utilisateur.getNom() == null || utilisateur.getNom().isBlank()) {
 			System.out.println("Nom obligatoire");
@@ -42,7 +43,7 @@ public class ClientServiceImpl extends UtilisateurServiceImpl {
 		utilisateur.setRole(tache);
 		utilisateurDAO.creer(utilisateur);
 	}
-		
+
 	}
 
 

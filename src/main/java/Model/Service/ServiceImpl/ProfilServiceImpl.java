@@ -5,12 +5,12 @@ import Model.Entites.Profil;
 import Model.Service.ServiceInter.ProfilServiceInter;
 
 public class ProfilServiceImpl implements ProfilServiceInter {
-	
+
 	private ProfilDAOImpl profilDAOImpl;
 	public ProfilServiceImpl(ProfilDAOImpl profilDAOImpl) {
 		this.profilDAOImpl = profilDAOImpl;
 	}
- 
+
 	@Override
 	public void creerProfil(Profil profil) {
 		// TODO Auto-generated method stub
@@ -32,7 +32,7 @@ public class ProfilServiceImpl implements ProfilServiceInter {
         }
 
         profilDAOImpl.ajouter(profil);
-		
+
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class ProfilServiceImpl implements ProfilServiceInter {
 	@Override
 	public void modifierProfil(Profil profil) {
 		// TODO Auto-generated method stub
-		
+
 		 if (profil == null) {
 	            System.out.println("Profil introuvable.");
 	            return;
@@ -69,7 +69,7 @@ public class ProfilServiceImpl implements ProfilServiceInter {
 	        profilDAOImpl.modifier(profil);
 
 	        System.out.println("Profil modifié.");
-		
+
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class ProfilServiceImpl implements ProfilServiceInter {
         }
 
         profilDAOImpl.supprimer(id);
-		
+
 	}
 
 }

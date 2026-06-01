@@ -1,29 +1,29 @@
 package Controller.Dashboard;
 
+import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 /**
  * Servlet implementation class DashboardServlet
  */
 @WebServlet("/DashboardServlet")
 public class DashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
+
+
     public DashboardServlet() {
         super();
-        
-    }
-        
 
-	
+    }
+
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 
 				String nomUtilisateur = "Kadidiatou";
 
@@ -42,7 +42,7 @@ public class DashboardServlet extends HttpServlet {
 
 				request.getRequestDispatcher("/dashboard.jsp")
 				       .forward(request, response);
-				
+
 			}
 
 	}

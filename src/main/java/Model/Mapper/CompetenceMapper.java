@@ -8,7 +8,7 @@ import Model.Entites.Competence;
 public class CompetenceMapper {
 	public static Competence map(ResultSet rs) throws SQLException {
         return new Competence(
-            rs.getInt("id"), 
+            rs.getInt("id"),
             rs.getString("nom"),
             rs.getString("description")
         );

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class ProfilDAOImpl implements ProfilInter{
         try (Connection conn = db.connexion();
 
              PreparedStatement psProfil =
-                     conn.prepareStatement(sqlProfil, PreparedStatement.RETURN_GENERATED_KEYS);
+                     conn.prepareStatement(sqlProfil, Statement.RETURN_GENERATED_KEYS);
 
              PreparedStatement psCompetence =
                      conn.prepareStatement(sqlCompetence);
@@ -67,7 +68,7 @@ public class ProfilDAOImpl implements ProfilInter{
 
                 psProfilCompetence.executeUpdate();
             }
-           
+
 
         } catch (SQLException e) {
 
@@ -130,9 +131,9 @@ public class ProfilDAOImpl implements ProfilInter{
                 List<Competence> competences = new ArrayList<>();
 
              while (rsCompetences.next()) {
-               
+
                  Competence c = CompetenceMapper.map(rsCompetences);
-                 
+
                  competences.add(c);
              }
 
@@ -208,7 +209,7 @@ public class ProfilDAOImpl implements ProfilInter{
                 psInsert.executeUpdate();
             }
 
-         
+
 
         } catch (SQLException e) {
 

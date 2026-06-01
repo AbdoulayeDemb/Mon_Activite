@@ -4,14 +4,18 @@ package Model.Service.ServiceImpl;
 
 
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import Model.Entites.Competence;
 import Model.InterfaceDB.Database;
-import Model.Service.ServiceInter.*;
+import Model.Service.ServiceInter.CompetenceServiceInter;
 
 public class CompetenceService implements CompetenceServiceInter{
 
@@ -23,7 +27,8 @@ public class CompetenceService implements CompetenceServiceInter{
         this.db = db;
     }
 
-    public void creerCompetence(Competence comp) {
+    @Override
+	public void creerCompetence(Competence comp) {
 
         String sql = "INSERT INTO competence(nom, description) VALUES (?, ?)";
 
@@ -45,7 +50,8 @@ public class CompetenceService implements CompetenceServiceInter{
         }
     }
 
-    public void modifierCompetence(Competence comp) {
+    @Override
+	public void modifierCompetence(Competence comp) {
 
         String sql = "UPDATE competence SET nom=?, description=? WHERE id=?";
 
@@ -68,7 +74,8 @@ public class CompetenceService implements CompetenceServiceInter{
         }
     }
 
-    public void supprimerCompetence(int id) {
+    @Override
+	public void supprimerCompetence(int id) {
 
         String sql = "DELETE FROM competence WHERE id=?";
 
@@ -89,7 +96,8 @@ public class CompetenceService implements CompetenceServiceInter{
         }
     }
 
-    public List<Competence> trouverTousCompetences() {
+    @Override
+	public List<Competence> trouverTousCompetences() {
 
         List<Competence> liste = new ArrayList<>();
 
@@ -120,7 +128,8 @@ public class CompetenceService implements CompetenceServiceInter{
         return liste;
     }
 
-    public Optional<Competence> trouverCompetenceParId(int id) {
+    @Override
+	public Optional<Competence> trouverCompetenceParId(int id) {
 
         String sql = "SELECT * FROM competence WHERE id=?";
 

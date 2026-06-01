@@ -1,10 +1,5 @@
 package Config;
 
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletContextEvent;
-import jakarta.servlet.ServletContextListener;
-import jakarta.servlet.annotation.WebListener;
-
 import java.sql.Connection;
 
 import Model.DAO.DAOImpl.TacheDAOImpl;
@@ -12,10 +7,13 @@ import Model.DAO.DAOImpl.UtilisateurDAOImpl;
 import Model.DAO.DAOInter.TacheInter;
 import Model.DAO.DAOInter.UtilisateurInter;
 import Model.InterfaceDB.Database;
-
 import Model.Service.ServiceImpl.UtilisateurServiceImpl;   // ← Important
 import Model.Service.ServiceInter.UtilisateurServiceInter;
 import Model.Utils.ConnexionDB.MySQL;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 
 @WebListener
 public class ApplicationInitializer implements ServletContextListener {

@@ -13,7 +13,7 @@ import Model.Entites.Competence;
 import Model.InterfaceDB.Database;
 
 public class ActiviteCompetenceDAOImpl implements ActiviteCompetenceInter {
-	
+
 	private final Database db;
 	private final CompetenceDAOImpl competenceTable;
 
@@ -21,12 +21,12 @@ public class ActiviteCompetenceDAOImpl implements ActiviteCompetenceInter {
 		this.db = db;
 		this.competenceTable = competenceTable;
 	}
-	
+
 
 	@Override
 	public void creer(Activite activite) {
 		// TODO Auto-generated method stub
-		
+
 		String query = "INSERT INTO activite_competence(activiteId,competenceId) VALUES (?,?)";
 		try (Connection conn = this.db.connexion(); PreparedStatement ptmt = conn.prepareStatement(query)) {
 			List<Competence> competences = activite.getCompetences();
@@ -38,7 +38,7 @@ public class ActiviteCompetenceDAOImpl implements ActiviteCompetenceInter {
 		} catch (SQLException e) {
 			System.out.println("Erreur :" + e.getMessage());
 		}
-		
+
 	}
 
 	@Override

@@ -127,16 +127,16 @@ public class UtilisateurDAOImpl	 implements UtilisateurInter {
 
         return null;
     }
-    
-    
+
+
 
     // Méthode supplémentaire pour la connexion
     @Override
     public Utilisateur trouverParTelephone(String telephone) {
     	String sql = """
-    	        SELECT u.*, r.nom as role_nom 
-            FROM utilisateur u 
-            LEFT JOIN role r ON u.roleId = r.id 
+    	        SELECT u.*, r.nom as role_nom
+            FROM utilisateur u
+            LEFT JOIN role r ON u.roleId = r.id
     	        WHERE u.telephone = ?
     	        """;
 
@@ -151,7 +151,7 @@ public class UtilisateurDAOImpl	 implements UtilisateurInter {
 
             if (rs.next()) {
                 return mapResultSetToUtilisateur(rs);
-                
+
             }
 
         } catch (SQLException e) {
@@ -253,12 +253,12 @@ public class UtilisateurDAOImpl	 implements UtilisateurInter {
         // === CORRECTION ICI : "roleId" au lieu de "role_id" ===
         // On utilise roleId car c'est le nom de la colonne dans ta table 'utilisateur'
         // ou l'alias que tu as défini dans ta requête SQL (r.id as roleId)
-        int roleId = rs.getInt("roleId"); 
+        int roleId = rs.getInt("roleId");
 
         if (!rs.wasNull()) {
             String roleNomStr = rs.getString("role_nom");
             TypeRole typeRole = null;
-            
+
             if (roleNomStr != null) {
                 try {
                     typeRole = TypeRole.valueOf(roleNomStr.trim().toUpperCase());
@@ -266,7 +266,7 @@ public class UtilisateurDAOImpl	 implements UtilisateurInter {
                     System.out.println("Erreur conversion rôle: " + roleNomStr);
                 }
             }
-            
+
             Tache role = new Tache(roleId, typeRole);
             u.setRole(role);
         }

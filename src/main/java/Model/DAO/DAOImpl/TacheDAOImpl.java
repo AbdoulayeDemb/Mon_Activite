@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-
 import Model.DAO.DAOInter.TacheInter;
 import Model.Entites.Tache;
 import Model.Enumeration.TypeRole;
@@ -81,7 +80,7 @@ public class TacheDAOImpl implements TacheInter{
 	        } catch (SQLException e) {
 	            System.out.println("SQL error " + e.getMessage());
 	        }
-		
+
 	}
-	
+
 }

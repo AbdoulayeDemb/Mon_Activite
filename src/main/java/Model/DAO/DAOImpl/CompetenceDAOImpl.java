@@ -15,9 +15,9 @@ import Model.InterfaceDB.Database;
 
 
 public class CompetenceDAOImpl implements CompetenceInter {
-	
+
 	private final Database db;
-	
+
 	public CompetenceDAOImpl(Database db) {
 		this.db = db;
 	}
@@ -99,7 +99,7 @@ public class CompetenceDAOImpl implements CompetenceInter {
 
             e.printStackTrace();
         }
-		
+
 	}
 
 	@Override

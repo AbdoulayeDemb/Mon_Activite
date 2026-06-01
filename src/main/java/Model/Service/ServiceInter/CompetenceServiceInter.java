@@ -3,7 +3,7 @@ package Model.Service.ServiceInter;
 import java.util.List;
 import java.util.Optional;
 
-import Model.Entites.*;
+import Model.Entites.Competence;
 
 public interface CompetenceServiceInter {
 	void creerCompetence(Competence comp);

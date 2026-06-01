@@ -1,17 +1,16 @@
 package Controller.Auth;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 import Model.Entites.Tache;
 import Model.Entites.Utilisateur;
 import Model.Enumeration.TypeRole;
 import Model.Service.ServiceInter.UtilisateurServiceInter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/inscription")
 public class InscriptionServelet extends HttpServlet {
@@ -85,7 +84,7 @@ public class InscriptionServelet extends HttpServlet {
             utilisateur.setTelephone(telephone.trim());
             utilisateur.setMdp(mdp);
 
-           
+
 
             Tache roleClient = new Tache();
 

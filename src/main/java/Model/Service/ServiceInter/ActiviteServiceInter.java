@@ -5,7 +5,7 @@ import java.util.List;
 import Model.Entites.Activite;
 
 public interface ActiviteServiceInter {
-		
+
 		void ajouter(Activite a);
 
 	    void modifier(Activite a);
@@ -16,6 +16,6 @@ public interface ActiviteServiceInter {
 
 	    Activite lire(int id);
 
-	
+
 
 }

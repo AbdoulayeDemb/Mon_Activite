@@ -7,7 +7,7 @@ import Model.Entites.Activite;
 import Model.Service.ServiceInter.ActiviteServiceInter;
 
 public class ActiviteService implements ActiviteServiceInter {
-	
+
 	private ActiviteInter activiteDAO;
 
 	public ActiviteService(ActiviteInter activiteDAO) {
@@ -16,20 +16,21 @@ public class ActiviteService implements ActiviteServiceInter {
 
 	}
 
+	@Override
 	public void ajouter(Activite a) {
 
-	        if ((a.getNom() == null || a.getNom().isEmpty()) 
+	        if ((a.getNom() == null || a.getNom().isEmpty())
 	        		&& (a.getDescription() == null || a.getDescription().isEmpty())
 	        		&& (a.getEtapes() == null || a.getEtapes().isEmpty() )
-	        		&& (a.getRisques() == null || a.getRisques().isEmpty()) 
+	        		&& (a.getRisques() == null || a.getRisques().isEmpty())
 	        		&& (a.getRevenueMin() >=0 )
 	        		&&(	a.getRevenueMax() >= 0)
-	        		&& (a.getDisponibilite() >= 0 ) 
-	        		&& (a.isAccesInternet() != true || a.isAccesInternet() != false) 
+	        		&& (a.getDisponibilite() >= 0 )
+	        		&& (!a.isAccesInternet() || a.isAccesInternet())
 	        		&& (a.getMateriaux() == null || a.getMateriaux().isEmpty())
 	        		&& (a.getCapital() >= 0 )
 	        		&& (a.getZone().name() == null || a.getZone().name().isEmpty())){
-	        	
+
 	            System.out.println("Veillez remplir tous les champs !");
 	            return;
 	        }
@@ -37,6 +38,7 @@ public class ActiviteService implements ActiviteServiceInter {
 	        activiteDAO.ajouter(a);
 	    }
 
+	@Override
 	public void modifier(Activite a) {
 
 		if (a.getId() <= 0) {
@@ -47,6 +49,7 @@ public class ActiviteService implements ActiviteServiceInter {
 		activiteDAO.modifier(a);
 	}
 
+	@Override
 	public void supprimer(int id) {
 
 		if (id <= 0) {
@@ -57,10 +60,12 @@ public class ActiviteService implements ActiviteServiceInter {
 		activiteDAO.supprimer(id);
 	}
 
+	@Override
 	public List<Activite>tousList() {
 		return activiteDAO.tousList();
 	}
 
+	@Override
 	public Activite lire(int id) {
 
 		if (id <= 0) {

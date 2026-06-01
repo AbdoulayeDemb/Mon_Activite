@@ -1,10 +1,6 @@
 package Model.Entites;
 
-import java.util.ArrayList;
-
 import java.util.Date;
-
-import java.util.List;
 
 
 
@@ -20,7 +16,7 @@ public class Recommandation {
 
 	private Date dateAjout;
 
-	
+
 
 	public Recommandation() {
 
@@ -30,7 +26,7 @@ public class Recommandation {
 
 
 
-	
+
 
 	public int getId() {
 
@@ -88,7 +84,7 @@ public class Recommandation {
 
 	}
 
-	
+
 
 	  public int getScore() {
 

@@ -1,7 +1,6 @@
 package Model.DAO.DAOImpl;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,16 +15,16 @@ import Model.InterfaceDB.Database;
 import Model.Mapper.ActiviteMapper;
 
 public class ActiviteDAOImpl implements ActiviteInter{
-	
+
 	private ActiviteCompetenceDAOImpl activiteCompetence;
 	private final Database db;
-	
+
 	public ActiviteDAOImpl(
 			Database db,
 			ActiviteCompetenceDAOImpl activiteCompetence
-			
+
 			) {
-		
+
 		this.db = db;
 		this.activiteCompetence = activiteCompetence;
 	}
@@ -33,10 +32,10 @@ public class ActiviteDAOImpl implements ActiviteInter{
 	@Override
 	public void ajouter(Activite a) {
 		// TODO Auto-generated method stub
-		
+
 		String sql = "INSERT INTO activite (nom, description, etapes, risques, revenuParMin, revenuParMax, "
                 + "disponibilite, accesInternet, materiaux, capital, zone) VALUES (?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-     
+
      //comp.trouverTousCompetences();
 
      try {
@@ -58,7 +57,7 @@ public class ActiviteDAOImpl implements ActiviteInter{
          ps.setString(11, a.getZone().name()); //permet de transformer typezone en chaine de caratere et l'envoyer dans la base de donnees
 
          ps.executeUpdate();
-         
+
          activiteCompetence.creer(a);
 
 
@@ -67,7 +66,7 @@ public class ActiviteDAOImpl implements ActiviteInter{
      } catch (SQLException e) {
          System.out.println("Erreur ajout: " + e.getMessage());
      }
-		
+
 	}
 
 	@Override
@@ -76,7 +75,7 @@ public class ActiviteDAOImpl implements ActiviteInter{
 		String sql = "UPDATE activite SET nom=?, description=?, etapes=?, risques=?, "
                 + "revenuParMin=?, revenuParMax=?, disponibilite=?, accesInternet=?, materiaux=?, capital=?, zone=? "
                 + "WHERE id=?";
-     
+
 
      try {
      	Connection conn = db.connexion();
@@ -98,8 +97,8 @@ public class ActiviteDAOImpl implements ActiviteInter{
 
          ps.executeUpdate();
 
-         
-      
+
+
          System.out.println("Activité modifiée !");
 
      } catch (SQLException e) {
@@ -111,13 +110,13 @@ public class ActiviteDAOImpl implements ActiviteInter{
 	public void supprimer(int id) {
 		// TODO Auto-generated method stub
 		try {
-        	
+
             String sql = "DELETE FROM activite WHERE id=?";
-        	
+
             Connection conn = db.connexion();
 
             PreparedStatement ps = conn.prepareStatement(sql);
-            
+
             ps.setInt(1, id);
 
             ps.executeUpdate();
@@ -127,7 +126,7 @@ public class ActiviteDAOImpl implements ActiviteInter{
         } catch (SQLException e) {
             System.out.println("Erreur suppression: " + e.getMessage());
         }
-		
+
 	}
 
 	@Override
@@ -145,17 +144,17 @@ public class ActiviteDAOImpl implements ActiviteInter{
 
             while (rs.next()) {
 
-                
+
                 Activite a = ActiviteMapper.map(rs);
 
                 // Charger les compétences liées
                 List<Competence> competences =
                         activiteCompetence.lire(a);
 
-                
+
                 a.setCompetences(competences);
 
-                
+
                 liste.add(a);
             }
 
@@ -179,7 +178,7 @@ public class ActiviteDAOImpl implements ActiviteInter{
         	Connection conn = db.connexion();
 
             PreparedStatement ps = conn.prepareStatement(sql);
-            
+
             ps.setInt(1, id);
 
             ResultSet rs = ps.executeQuery();

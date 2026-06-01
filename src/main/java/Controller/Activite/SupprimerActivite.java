@@ -1,25 +1,24 @@
 package Controller.Activite;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import Model.DAO.DAOImpl.ActiviteCompetenceDAOImpl;
 import Model.DAO.DAOImpl.ActiviteDAOImpl;
 import Model.DAO.DAOImpl.CompetenceDAOImpl;
-import Model.DAO.DAOInter.ActiviteInter;
 import Model.InterfaceDB.Database;
 import Model.Service.ServiceImpl.ActiviteService;
 import Model.Utils.ConnexionDB.MySQL;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/SupprimerActivite")
 public class SupprimerActivite extends HttpServlet {
 	//private static final long serialVersionUID = 1L;
-       
+
     private ActiviteService activiteService;
 
     @Override
@@ -41,7 +40,7 @@ public class SupprimerActivite extends HttpServlet {
 
 
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  // récupérer id
         int id = Integer.parseInt(
@@ -54,10 +53,10 @@ public class SupprimerActivite extends HttpServlet {
         // redirection
         response.sendRedirect("listeDesActivites");
     }
-	
+
 	}
 
-	
+
 
 
 

@@ -2,7 +2,6 @@ package Model.Utils.ConnexionDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import Model.InterfaceDB.Database;
 
@@ -50,7 +49,7 @@ public class MySQL implements Database {
 	@Override
 	public void deconnexion(Connection conn) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -1,11 +1,5 @@
 package Controller.Profil;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,6 +9,12 @@ import Model.Entites.Profil;
 import Model.Entites.Utilisateur;
 import Model.Enumeration.TypeZone;
 import Model.Utils.ConnexionDB.MySQL;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/ModifierProfilServelet")
 public class ModifierProfilServelet extends HttpServlet {
@@ -47,7 +47,7 @@ public class ModifierProfilServelet extends HttpServlet {
             // On stocke le profil existant dans la requête pour que la JSP puisse pré-remplir les inputs
             request.setAttribute("profil", profilExistant);
         }
-        
+
         request.getRequestDispatcher("/modifierProfilForm.jsp").forward(request, response);
     }
 
@@ -66,7 +66,7 @@ public class ModifierProfilServelet extends HttpServlet {
         try {
             // 1. On va chercher l'ancien profil pour garder son ID technique
             Profil profil = profilDAO.trouverParUtilisateur(userConnecte.getId());
-            
+
             // 2. On met à jour l'objet avec les nouvelles valeurs reçues du formulaire
             profil.setDisponibilite(Double.parseDouble(request.getParameter("disponibilite")));
             profil.setAccessInternet(request.getParameter("accesInternet") != null);

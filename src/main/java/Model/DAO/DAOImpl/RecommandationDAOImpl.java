@@ -12,7 +12,7 @@ import Model.InterfaceDB.Database;
 
 public class RecommandationDAOImpl  implements RecommandationInter{
 
-	
+
 	private Database db;
 
     // Constructeur conseillé
@@ -20,7 +20,8 @@ public class RecommandationDAOImpl  implements RecommandationInter{
         this.db = db;
     }
 
-    public List<Recommandation> afficher(int profilId) {
+    @Override
+	public List<Recommandation> afficher(int profilId) {
 
         List<Recommandation> liste = new ArrayList<>();
         String sql = "SELECT * FROM recommandation WHERE profilId = ?";
@@ -54,7 +55,7 @@ public class RecommandationDAOImpl  implements RecommandationInter{
 	@Override
 	public void ajouter(Recommandation r) {
 		// TODO Auto-generated method stub
-		
+
 		String sql = "INSERT INTO recommandation(activiteId, profilId, dateAjout) VALUES (?, ?, ?)";
 
         try (Connection conn = this.db.connexion();
@@ -71,7 +72,7 @@ public class RecommandationDAOImpl  implements RecommandationInter{
         } catch (Exception e) {
             e.printStackTrace();
         }
-		
+
 	}
 
 	@Override

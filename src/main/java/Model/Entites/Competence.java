@@ -10,7 +10,7 @@ public class Competence {
 
 	private String description;
 
-	
+
 
 	public Competence() {
 
@@ -78,6 +78,6 @@ public class Competence {
 
 	}
 
-		
+
 
 }

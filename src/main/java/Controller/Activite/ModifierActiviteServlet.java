@@ -1,25 +1,21 @@
 package Controller.Activite;
 
-import jakarta.servlet.ServletException;
-
-
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import Model.DAO.DAOImpl.ActiviteCompetenceDAOImpl;
 import Model.DAO.DAOImpl.ActiviteDAOImpl;
 import Model.DAO.DAOImpl.CompetenceDAOImpl;
-import Model.DAO.DAOInter.ActiviteCompetenceInter;
-import Model.DAO.DAOInter.ActiviteInter;
 import Model.Entites.Activite;
 import Model.Enumeration.TypeZone;
 import Model.InterfaceDB.Database;
 import Model.Service.ServiceImpl.ActiviteService;
 import Model.Service.ServiceInter.ActiviteServiceInter;
 import Model.Utils.ConnexionDB.MySQL;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class ModifierActiviteServlet
@@ -27,12 +23,12 @@ import Model.Utils.ConnexionDB.MySQL;
 @WebServlet("/ModifierActiviteServlet")
 public class ModifierActiviteServlet extends HttpServlet {
 	//private static final long serialVersionUID = 1L;
-	
+
 		private ActiviteServiceInter activiteService;
 
     @Override
     public void init() {
-    	
+
     	 Database db = new MySQL();
 
  	    CompetenceDAOImpl competenceDAO =
@@ -45,7 +41,7 @@ public class ModifierActiviteServlet extends HttpServlet {
  	            new ActiviteDAOImpl(db, activiteCompetenceDAO);
 
  	    activiteService = new ActiviteService(dao);
-    
+
     }
 
     @Override

@@ -8,7 +8,6 @@ import Model.DAO.DAOInter.TacheInter;
 import Model.DAO.DAOInter.UtilisateurInter;
 import Model.Entites.Tache;
 import Model.Entites.Utilisateur;
-import Model.Enumeration.TypeRole;
 import Model.Service.ServiceInter.UtilisateurServiceInter;
 
 
@@ -70,8 +69,9 @@ public class UtilisateurServiceImpl implements UtilisateurServiceInter {   // ‚Ü
 
 	@Override
 	public Utilisateur connexion(String telephone, String mdp) {
-		if (telephone == null || mdp == null)
+		if (telephone == null || mdp == null) {
 			return null;
+		}
 
 		// Nettoyage de l'entr√©e utilisateur
 		String telNettoye = telephone.trim();
@@ -140,8 +140,8 @@ public class UtilisateurServiceImpl implements UtilisateurServiceInter {   // ‚Ü
 	public List<Utilisateur> afficherTousUtilisateurs() {
 		return utilisateurDAO.trouveTous();
 	}
-	
-	@Override 
+
+	@Override
 	public Utilisateur trouverParTelephone(String telephone){
 		return this.utilisateurDAO.trouverParTelephone(telephone);
 	}

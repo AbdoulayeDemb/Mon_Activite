@@ -1,16 +1,15 @@
 package Controller.Auth;
 
+import java.io.IOException;
+
+import Model.Entites.Utilisateur;
+import Model.Service.ServiceInter.UtilisateurServiceInter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import java.io.IOException;
-
-import Model.Entites.Utilisateur;
-import Model.Service.ServiceInter.UtilisateurServiceInter;
 
 /**
  * Servlet implementation class ConnexionServelet
@@ -19,7 +18,7 @@ import Model.Service.ServiceInter.UtilisateurServiceInter;
 public class ConnexionServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    private UtilisateurServiceInter utilisateurServiceInter;
-   
+
    @Override
    public void init() throws ServletException {
 	   utilisateurServiceInter =
@@ -44,12 +43,12 @@ public class ConnexionServelet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String telephone = request.getParameter("telephone");
 		String mdp = request.getParameter("mdp");
-		
+
 		Utilisateur utilisateur = utilisateurServiceInter.connexion(telephone, mdp);
 		if(utilisateur != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateurConnecte", utilisateur);
-			
+
 			switch (utilisateur.getRole().getNom()) {
 			case CLIENT: {
 				response.sendRedirect(request.getContextPath() + "/views/client/dashboardClient.jsp");
@@ -62,7 +61,7 @@ public class ConnexionServelet extends HttpServlet {
 			case ADMIN: {
 				response.sendRedirect(request.getContextPath() + "/views/admin/dashboardAdmin.jsp");
 			}
-			
+
 			}
 		}
 	}

@@ -5,7 +5,7 @@ import java.util.List;
 import Model.Entites.Favoris;
 
 public interface FavorisServiceInter {
-	
+
 	void ajouterFavori(
             int utilisateurId,
             int activiteId

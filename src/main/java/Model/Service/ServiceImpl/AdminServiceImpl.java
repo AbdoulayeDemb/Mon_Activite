@@ -16,8 +16,9 @@ public class AdminServiceImpl extends UtilisateurServiceImpl{
 
 	@Override
 	public void inscription(Utilisateur utilisateur) {
-		if (utilisateur == null)
+		if (utilisateur == null) {
 			return;
+		}
 
 		if (utilisateur.getNom() == null || utilisateur.getNom().isBlank()) {
 			System.out.println("Nom obligatoire");
@@ -39,9 +40,9 @@ public class AdminServiceImpl extends UtilisateurServiceImpl{
 
 		Tache tache = this.roleInter.findByNom(TypeRole.ADMIN).get();
 		utilisateur.setRole(tache);
-		
+
 		utilisateurDAO.creer(utilisateur);
-		
+
 	}
 
 }
