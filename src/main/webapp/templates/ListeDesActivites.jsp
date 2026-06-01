@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page isELIgnored="false" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Tableau de bord</title>
+<title>Liste des activités</title>
 
-<link rel="stylesheet" href="Dashbord.css">
+<link rel="stylesheet" href="assets/css/ListeDesActivites.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 </head>
@@ -54,7 +53,7 @@
 
         <div class="header">
 
-            <h1>Tableau de bord</h1>
+            <h1>Liste des activites</h1>
 
             <div class="user">
 
@@ -67,56 +66,50 @@
             </div>
 
         </div>
-
-
-        <div class="welcome-card">
-
-            <div>
-
-                <h3>
-                    Bienvenue ${nomUtilisateur} !
-                </h3>
-
-                <p>
-                    Gérez vos missions et suivez vos activités
-                </p>
-
-                <p>
-                    en un seul endroit.
-                </p>
-
-            </div>
-
-            <div class="welcome-icon">
-                <i class="fa-regular fa-user"></i>
-            </div>
-
+        
+        <!-- Actions -->
+        <div class="actions-bar">
+            <button class="filter">Filtre par </button>
+            <button class="add">Ajouter </button>
         </div>
 
-        <!-- STATISTIQUES -->
+ <!-- Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Ctgie</th>
+                    <th>Dscrpt</th>
+                    <th>Dispo</th>
+                    <th>AccesIn</th>
+                    <th>Zne</th>
+                    <th>Cptl</th>
+                    <th>RMin</th>
+                    <th>RMax</th>
+                    <th>Cptce</th>
+                    <th>Risque</th>
+                    <th>Mtril</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
 
-        <div class="stats">
+                <tbody>
+                <tr>
+                    <td colspan="13" class="empty">Aucune activité disponible</td>
+                </tr>
+                </tbody>
 
-            <div class="card">
-                <p>Activités inserer</p>
-                <h2>${nbActivites}</h2>
-            </div>
-
-            <div class="card">
-                <p>Clients inscrits</p>
-                <h2>${nbClients}</h2>
-            </div>
-
-            <div class="card">
-                <p>Missions</p>
-                <h2>${nbMissions}</h2>
-            </div>
-
+            </table>
+            
         </div>
+
+
+      
 
     </div>
 
 </div>
-
+    
 </body>
 </html>

@@ -36,7 +36,7 @@ public class InscriptionServelet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getRequestDispatcher(
-                "/views/auth/inscription.jsp"
+                "/inscription.jsp"
         ).forward(request, response);
     }
 
@@ -68,7 +68,7 @@ public class InscriptionServelet extends HttpServlet {
             );
 
             request.getRequestDispatcher(
-                    "/views/auth/inscription.jsp"
+                    "/inscription.jsp"
             ).forward(request, response);
 
             return;
@@ -88,7 +88,7 @@ public class InscriptionServelet extends HttpServlet {
 
             Tache roleClient = new Tache();
 
-            roleClient.setId(7); // Adapter selon ta table role
+            roleClient.setId(1); // Adapter selon ta table role
 
             roleClient.setNom(
                     TypeRole.CLIENT
@@ -124,7 +124,7 @@ public class InscriptionServelet extends HttpServlet {
             );
 
             request.getRequestDispatcher(
-                    "/views/auth/inscription.jsp"
+                    "/inscription.jsp"
             ).forward(request, response);
         }
 
